@@ -1,0 +1,181 @@
+{
+  "status": "BLOCKED",
+  "task": {
+    "name": "gnucleus-ai/freecad-2002df3ce7",
+    "type": "package",
+    "digest": "sha256:67a0fcb49ef3472055bde2a0684bd555d6ac464009e921d770313e9bf9800835",
+    "source": "gnucleus-ai/cad-bench"
+  },
+  "frozen_config_sha256": "be9f0a3303d38537bae047ded2c4253ecf9e0641c56d2f83764e66fcc557a5db",
+  "agent": {
+    "Image": "sha256:7ab295551e161d6c14604f1cfc7233dbc9f72c8760de87671008783d12e6a604",
+    "Mounts": [
+      {
+        "Destination": "/logs/artifacts",
+        "Mode": "rw",
+        "Propagation": "rprivate",
+        "RW": true,
+        "Source": "/home/gypsophila/geotree/work/e02-l/l-972d85b4514000b4-l1/jobs/l-972d85b4514000b4-l1/freecad-2002df3ce7__c8SsJ2q/artifacts/logs/artifacts",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/logs/verifier",
+        "Mode": "rw",
+        "Propagation": "rprivate",
+        "RW": true,
+        "Source": "/home/gypsophila/geotree/work/e02-l/l-972d85b4514000b4-l1/jobs/l-972d85b4514000b4-l1/freecad-2002df3ce7__c8SsJ2q/verifier",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/logs/agent",
+        "Mode": "rw",
+        "Propagation": "rprivate",
+        "RW": true,
+        "Source": "/home/gypsophila/geotree/work/e02-l/l-972d85b4514000b4-l1/jobs/l-972d85b4514000b4-l1/freecad-2002df3ce7__c8SsJ2q/agent",
+        "Type": "bind"
+      }
+    ],
+    "NetworkMode": "container:eda4c01aa87fd00295a0472e67dccc25b490a689b3661e62dbed57c444402499",
+    "Cpu": 2000000000,
+    "Ram": 4294967296,
+    "Gpu": null,
+    "Privileged": false,
+    "image": {
+      "Id": "sha256:7ab295551e161d6c14604f1cfc7233dbc9f72c8760de87671008783d12e6a604",
+      "RepoDigests": [
+        "freecad-2002df3ce7__c8ssj2q__env-main@sha256:7ab295551e161d6c14604f1cfc7233dbc9f72c8760de87671008783d12e6a604"
+      ],
+      "RootFS": {
+        "Type": "layers",
+        "Layers": [
+          "sha256:538812a4b9bd45adaac2b5e5b967daa6999aa44eb110aa32ae7c69702b906475",
+          "sha256:85bed0f05cd1f424e7ee217174cfb4689f846acf7bd9f34879a13e0afe7e64c6",
+          "sha256:574dadc0730f7be11bf53c185d12871cf904eb9f57c42eebfddaae75f3fa716f",
+          "sha256:5f7c1785fd84063c8ccd063dd080647173b4f0e6d8440286e1b6a69c1f301923",
+          "sha256:298aa77dc84aad7e16d79e379f220cb18478902547136cb51f841038a5c952d1",
+          "sha256:69591cbb5a8228304dbe31311c12097c6cee26a6f23395c6c8d93514e3a85e1d",
+          "sha256:5149c2ef8e72b0d217207c3ec077954154e36fa13b9916adb144b287f1e34a2d",
+          "sha256:aeade1847ea84f552438cc424aab16dfa0a2b76a3079bfb1765e26c24d844620",
+          "sha256:91c2d19e4cdd968b2c033010f2ec62973f5b8b7e35261ef1c383256bf95d7645",
+          "sha256:cd12346593ebab3f66275b6596a8206b0edac96d428da2a4a160a27466ff53a7"
+        ]
+      },
+      "Architecture": "amd64",
+      "Os": "linux",
+      "Config": {
+        "Env": [
+          "PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "CONDA_DIR=/opt/conda",
+          "LANG=C.UTF-8",
+          "LC_ALL=C.UTF-8",
+          "FREECAD_LIB=/opt/conda/lib:/opt/conda/Mod:/opt/conda/share/Mod"
+        ],
+        "Cmd": [
+          "/bin/bash"
+        ],
+        "Entrypoint": [
+          "tini",
+          "--"
+        ],
+        "User": null,
+        "WorkingDir": "/app"
+      }
+    },
+    "base_image_digest": "sha256:7de9956cd783d48955835e61b8d212c26b2df901d5a5be8217bd58fb6c1bd5a4"
+  },
+  "verifier": {
+    "Image": "sha256:6d3ca9ee4cebe4919f66be94a5b87255a6118ad17cf1d47bccee6c2a930e1ff0",
+    "Mounts": [
+      {
+        "Type": "bind",
+        "Source": "/home/gypsophila/geotree/work/e02-l/native-verifier-probe/freecad-2002df3ce7__native_image_gate/verifier",
+        "Destination": "/logs/verifier",
+        "Mode": "rw",
+        "RW": true,
+        "Propagation": "rprivate"
+      }
+    ],
+    "NetworkMode": "freecad-2002df3ce7__native_image_gate__verifier__trial_default",
+    "Cpu": 2000000000,
+    "Ram": 4294967296,
+    "Gpu": null,
+    "Privileged": false,
+    "Running": true,
+    "image": {
+      "Id": "sha256:6d3ca9ee4cebe4919f66be94a5b87255a6118ad17cf1d47bccee6c2a930e1ff0",
+      "RepoDigests": [
+        "freecad-2002df3ce7__native_image_gate__verifier__trial-main@sha256:6d3ca9ee4cebe4919f66be94a5b87255a6118ad17cf1d47bccee6c2a930e1ff0"
+      ],
+      "RootFS": {
+        "Type": "layers",
+        "Layers": [
+          "sha256:538812a4b9bd45adaac2b5e5b967daa6999aa44eb110aa32ae7c69702b906475",
+          "sha256:85bed0f05cd1f424e7ee217174cfb4689f846acf7bd9f34879a13e0afe7e64c6",
+          "sha256:36f8d339f4ce4eed3e5e120158b4176c2c0f03ba0681ddf28cbdaa209a7ee54d",
+          "sha256:2f8d0a30dc5236fa4aa1df08eb2fc543ea769acf930e463a45e5fbff84aa0fbf",
+          "sha256:c2f8d6e6bd232ce63a4a286e61ec57ce39a1c824eeeabce13185d8b5eff2829c",
+          "sha256:0e972fb4d47a4ed08ddea486ac2273c6180c11fb43ee9bbefdb5724b37d9d72a",
+          "sha256:f1083295b1f660362e6a1941cd33045304f59be17fde06c08d8336f6a5c1a293",
+          "sha256:e8269f68cffe1cd096ab298a6f2870b2d38836cf0d835e86328a0f127e7b86de",
+          "sha256:34235b10e5b69ec7306a6cede5aee672f350e14f4fc6336c3678eca3838a46ec",
+          "sha256:097c67cf1107971312138ad7f2352232ed2a4f5561883184c71923c8fe38479e"
+        ]
+      },
+      "Architecture": "amd64",
+      "Os": "linux",
+      "Config": {
+        "Env": [
+          "PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "CONDA_DIR=/opt/conda",
+          "LANG=C.UTF-8",
+          "LC_ALL=C.UTF-8",
+          "FREECAD_LIB=/opt/conda/lib:/opt/conda/Mod:/opt/conda/share/Mod"
+        ],
+        "Cmd": [
+          "/bin/bash"
+        ],
+        "Entrypoint": [
+          "tini",
+          "--"
+        ],
+        "User": null,
+        "WorkingDir": "/app"
+      }
+    },
+    "base_image_digest": null,
+    "base_image_digest_note": "not independently verified; verifier recipe not read"
+  },
+  "verifier_config": {
+    "environment_mode": "separate",
+    "timeout_sec": 600.0,
+    "network_mode": null,
+    "user": null,
+    "environment": {}
+  },
+  "mock": {
+    "trial": "freecad-2002df3ce7__c8SsJ2q",
+    "exit": 0,
+    "exception": null,
+    "terminal": "done",
+    "actions": [
+      "check_workspace",
+      "run_freecad",
+      "done"
+    ],
+    "atif_steps": 3,
+    "artifacts": {
+      "answer.py": {
+        "bytes": 354,
+        "sha256": "45481dff86f1ea999c103e1049e5e3397b0a3dac001c455efe040f531470f6b9"
+      },
+      "answer.FCStd": {
+        "bytes": 7179,
+        "sha256": "b3807edda607bfba07264008923bd8aa7c1927ff8ea272951f40d01512696068"
+      }
+    },
+    "verifier_invoked": false,
+    "model_requests": 0
+  },
+  "parity": "PASS in paired mock; only L1 successful CAD triggers worker; no reward history",
+  "blocker": "Frozen run-arm.sh accepts K trial IDs only; EnhancedAgent L and relay require L trial IDs."
+}

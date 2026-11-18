@@ -1,0 +1,84 @@
+{
+  "schema_version": "geotree-comparison-v0.1",
+  "status": "DESIGN_FROZEN_EXECUTION_NOT_AUTHORIZED",
+  "provider": "DeepSeek",
+  "requested_model_family": "DeepSeek V4.1 Flash",
+  "api_model_id": "deepseek-flash",
+  "snapshot_requirement": "DeepSeek-V4.1-Flash-1017",
+  "snapshot_verification": "Official pricing documentation checked 2026-11-12: deepseek-flash maps to DeepSeek-V4.1-Flash-1017. Recheck before execution; no API call performed.",
+  "groups": {
+    "A0": {
+      "policy": "NoSearch",
+      "k": 1
+    },
+    "A1": {
+      "policy": "GeoTree-Lite",
+      "k_max": 3,
+      "execute_per_turn": 1,
+      "implemented": false
+    }
+  },
+  "benchmark": "gnucleus-ai/cad-bench",
+  "dataset_digest": "sha256:8a786725d3648a76282fc5868df06da3d5e00d603f283573a53430803465d78a",
+  "development_tasks": [
+    {
+      "name": "gnucleus-ai/freecad-6b54209a13",
+      "digest": "sha256:741b7289accd15447a3a2ea1a7ffa21853fcafa07aa4a08b2d592a9877c3f2d9",
+      "status": "seen-development-task; not held-out"
+    }
+  ],
+  "evaluation_tasks": [],
+  "paired_settings": {
+    "harbor": "0.23.0",
+    "freecad": "1.1.0",
+    "cpus": 2,
+    "memory_mb": 4096,
+    "gpus": 0,
+    "concurrency": 1,
+    "attempts": 1,
+    "retries": 0,
+    "max_decisions": 4,
+    "max_tool_calls": 4,
+    "wall_clock_sec": 9000,
+    "max_output_tokens_per_request": 8192,
+    "temperature": 0,
+    "reasoning_effort": "MAX_SUPPORTED_TO_BE_VERIFIED",
+    "image_policy": "same original public PNG, no variant-specific crop or OCR",
+    "hidden_verifier_feedback": "terminal only; never provider observation",
+    "tools": [
+      "check_workspace",
+      "run_freecad",
+      "done"
+    ],
+    "validator": "same frozen version in both groups",
+    "prompt_policy": "common base; only candidate_count instruction differs; hashes required"
+  },
+  "cost": {
+    "counters": [
+      "all model calls",
+      "input_tokens",
+      "cached_input_tokens",
+      "output_tokens",
+      "reasoning_tokens_when_reported",
+      "tool_calls",
+      "wall_time",
+      "peak_memory_when_measured"
+    ],
+    "usd": "compute from provider usage and dated verified tariff; never infer missing usage as zero",
+    "aggregate_token_cap": 100000,
+    "dollar_cap": 1.0,
+    "comparison": "paired success plus score-vs-total-token/time curves; A1 candidate generation is charged",
+    "budget_status": "PROPOSED_PER_TASK_CAPS; NOT authorization to call paid APIs"
+  },
+  "external_baselines": "official historical Codex/Claude Code results are external references, never self-run or causal evidence",
+  "dsh": "optional; does not block A0/A1",
+  "gates": [
+    "actual API snapshot/effort support confirmed",
+    "explicit model API budget",
+    "freeze disjoint evaluation subset",
+    "valid CAD and verifier end-to-end",
+    "same observation/executor boundaries",
+    "record all failures; no score-based retries"
+  ],
+  "model_source": "https://api-docs.deepseek.com/quick_start/pricing/"
+}

@@ -1,0 +1,6 @@
+services:
+  main:
+    pull_policy: never
+    network_mode: none
+    pids_limit: 128
+    security_opt: ["no-new-privileges:true"]
