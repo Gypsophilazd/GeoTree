@@ -1,0 +1,118 @@
+{
+  "historical": [
+    {
+      "group": "E02-L L0",
+      "reward": 0.6606040907223277,
+      "mode": "HISTORICAL DEV",
+      "tokens": 131571,
+      "wall": 913.739
+    },
+    {
+      "group": "E02-L L1",
+      "reward": 0.4549490215616256,
+      "mode": "HISTORICAL DEV",
+      "tokens": 126803,
+      "wall": 807.488
+    }
+  ],
+  "new": [
+    {
+      "group": "B0",
+      "task": "freecad-0a7d0da980",
+      "digest": "sha256:9fd2ecf1a502c529d332752336a2eb134f8df9209e5033a9ae3908f6cad55d8b",
+      "reward": null,
+      "status": "NOT_RUN",
+      "tokens": null,
+      "wall_seconds": null,
+      "replay": "NOT_RUN",
+      "trial": null,
+      "error": "Native Harbor Codex requires a container auth/env route; no approved host-only subscription route verified",
+      "artifact_status": "NOT_RUN"
+    },
+    {
+      "group": "B0",
+      "task": "freecad-81ef58aebd",
+      "digest": "sha256:f9cc6886ffa7b344fb4ac4d236dc6c73d2d5f67c5a9bd0aff28a2cbc729ccdb3",
+      "reward": null,
+      "status": "NOT_RUN",
+      "tokens": null,
+      "wall_seconds": null,
+      "replay": "NOT_RUN",
+      "trial": null,
+      "error": "Native Harbor Codex requires a container auth/env route; no approved host-only subscription route verified",
+      "artifact_status": "NOT_RUN"
+    },
+    {
+      "group": "B1",
+      "task": "freecad-0a7d0da980",
+      "digest": "sha256:9fd2ecf1a502c529d332752336a2eb134f8df9209e5033a9ae3908f6cad55d8b",
+      "reward": 0.0,
+      "status": "SCORED_REGRADING",
+      "tokens": 86661,
+      "wall_seconds": 377.44375,
+      "replay": "PASS",
+      "trial": "l-ad1a8ff0212d449e-l0",
+      "error": "Docker default address pools exhausted",
+      "artifact_status": "PRESENT"
+    },
+    {
+      "group": "B1",
+      "task": "freecad-81ef58aebd",
+      "digest": "sha256:f9cc6886ffa7b344fb4ac4d236dc6c73d2d5f67c5a9bd0aff28a2cbc729ccdb3",
+      "reward": 0.0,
+      "status": "SCORED",
+      "tokens": 165124,
+      "wall_seconds": 781.308218,
+      "replay": "NOT_RUN",
+      "trial": "l-5bee781446f7f52d-l0",
+      "error": "decision_budget_exhausted",
+      "artifact_status": "NOT_RUN"
+    },
+    {
+      "group": "B2",
+      "task": "freecad-0a7d0da980",
+      "digest": "sha256:9fd2ecf1a502c529d332752336a2eb134f8df9209e5033a9ae3908f6cad55d8b",
+      "reward": 0.814775490350993,
+      "status": "SCORED",
+      "tokens": 86531,
+      "wall_seconds": 533.287446,
+      "replay": "PASS",
+      "trial": "l-8c47cfc832e78a4b-l1",
+      "error": null,
+      "artifact_status": "PRESENT"
+    },
+    {
+      "group": "B2",
+      "task": "freecad-81ef58aebd",
+      "digest": "sha256:f9cc6886ffa7b344fb4ac4d236dc6c73d2d5f67c5a9bd0aff28a2cbc729ccdb3",
+      "reward": null,
+      "status": "FAILED",
+      "tokens": 40593,
+      "wall_seconds": 250.772645,
+      "replay": "NOT_RUN",
+      "trial": "l-5bee781446f7f52d-l1",
+      "error": "Model response stream disconnected",
+      "artifact_status": "NOT_RUN"
+    }
+  ],
+  "summary": {
+    "B0": {
+      "n": 0,
+      "mean": null,
+      "replay_pass": 0,
+      "replay_denominator": 0
+    },
+    "B1": {
+      "n": 2,
+      "mean": 0.0,
+      "replay_pass": 1,
+      "replay_denominator": 2
+    },
+    "B2": {
+      "n": 1,
+      "mean": 0.814775490350993,
+      "replay_pass": 1,
+      "replay_denominator": 2
+    }
+  }
+}

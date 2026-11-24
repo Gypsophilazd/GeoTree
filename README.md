@@ -1,41 +1,39 @@
-# GeoTree
+# GeoTree Studio · E06
 
-A task-grounded verification and safe-repair harness for autonomous parametric CAD agents, built with FreeCAD and Harbor.
+GeoTree turns text into a parametric FreeCAD design and exposes its script, real feature meshes, and geometry checks. It combines a loopback Studio with a research harness for task-grounded verification and bounded repair.
 
-[简体中文](README.zh-CN.md) · [Windows / WSL2 setup](docs/windows-setup.md) · [Architecture](docs/GeoTree_Architecture_v0.1.md) · [Research status](experiments/summaries/research-status.md)
+## Quick start — Ubuntu or Windows with WSL2 Ubuntu
 
-A model proposes a bounded action. GeoTree validates it and Harbor runs the permitted CAD action in a task container using FreeCAD/OCC. The next observation receives execution feedback and, in enhanced mode, eligible public-evidence geometry checks. ATIF and raw events preserve the decision trail. Independent scoring is terminal-only and never used as model feedback.
-
-## What works and what does not
-
-- NoSearch (one proposal per turn), validated actions, shared step/deadline/CAD budgets, MockProvider, ATIF and traces.
-- Legacy Harbor entries, paired raw/geometry entry, and paired text entry with evidence-gated deterministic checks. Missing or ambiguous mapping is UNKNOWN, not FAIL.
-- Host-side Windows Codex relay with schema, mailbox IDs, deadlines and supervised processes. The default smoke path uses no account and never launches Codex.
-- Experimental FreeCAD copy-only planar-pocket repair contract and restricted isolated pad length repair with reopen, regression and BRep checks. The latter is driven by the offline API; the live L comparison reports existing verification, not an automatic repair success. An FCStd edit is not an answer.py replay.
-- No MCTS, no general drawing interpretation, no claimed cross-task performance lift, no official leaderboard results. Development rewards are not causal evidence. Latest E02-L3 had an infrastructure failure: zero model requests, reward null, not zero.
-
-## Quick start in Ubuntu / WSL2
-
-Install uv and enable a Linux Docker daemon first. From the repository root:
+Requirements: Python 3.12, uv, Docker Linux containers (Docker Desktop WSL integration if using Windows). From the clone in Ubuntu:
 
 ```bash
 bash scripts/setup-linux.sh
-bash scripts/smoke-python.sh
-docker build -f docker/smoke.Dockerfile -t geotree-smoke:freecad-1.1 .
-bash scripts/smoke-linux.sh
-bash scripts/smoke-harbor.sh
+docker build -f docker/smoke.Dockerfile -t geotree/freecad:1.1.0 .
+bash scripts/studio-smoke.sh
+bash scripts/studio-start.sh
 ```
 
-The first smoke is Python and MockProvider only. The second adds a synthetic FreeCAD observation and copy-only repair. The third runs the real Harbor EnhancedAgent against a synthetic task, with verification disabled and a local mock relay. No dataset, model or score is needed. An existing compatible conda/FreeCAD image can be used instead of building; see the setup guide.
+Open <http://127.0.0.1:8765/>. For remote Linux, forward a loopback port: `ssh -N -L 127.0.0.1:18765:127.0.0.1:8765 YOUR_SSH_HOST`. Keep Studio private; it is not a multi-user service. To reuse a compatible local FreeCAD 1.1 image set `GEOTREE_FREECAD_IMAGE` to its local ID or tag. See [Windows setup](docs/windows-setup.md).
 
-## Agent and research map
+Mock tests transport and persistence, not CAD. For genuine model-free CAD use **检查合成件右三角** and **运行 E05 限定修复**; the bundled source is built, measured, edited in isolation and independently replayed. Preview before/after. No historical CAD files are required.
 
-- `src/geotree/nosearch.py`, `paired_agent.py`: ModelProvider, validator, executor, runtime, recorder, budgets.
-- `src/geotree/enhanced_agent_l.py`: Harbor L entry for both raw and enhanced text modes; `harbor_agent.py`: no-model legacy entry.
-- `geometry_reader.py`, `geometry_observer.py`, `geometry_feedback.py`, `task_geometry.py`: artifact inspection, binding and deterministic queries.
-- `constraint_candidates.py`, `evidence_gate.py`, `verification_harness.py`, `k_worker.py`: public-constraint discovery, conservative verification and fixed worker.
-- `safe_repair.py`, `experiments/methods/`: isolated pad repair and historical multi-view/pocket research code. Historical scripts require their original public inputs/snapshots to reproduce study-specific cases.
-- `bridge/windows/`, `scripts/`, `tests/`, `examples/`: relay, entry points, regression tests and synthetic examples.
-- `configs/`, `experiments/manifests/`, `docs/`: methods, freezes and reports. Historic paths there identify evidence on the source host, not setup dependencies.
+## Providers and replay
 
-For your own account and a complete authorized Harbor trial, use the [explicit opt-in workflow](docs/windows-setup.md#optional-authorized-harbor-task). A different provider can implement the ModelProvider/JSON transport contract; do not send account files into the container. Benchmark tasks, verifier payloads, model credentials, Docker layers and raw historical job directories are not part of this repository. No redistribution license is asserted.
+- **Codex:** verify your own Windows ChatGPT CLI login with `codex login status`. Set `GEOTREE_STUDIO_URL` to the Studio loopback URL (the relay default is port 18765), then run `py -3.13 bridge/windows/studio_bridge.py`. The tested model is GPT-6.2 Sol/high; entitlement and CLI options depend on your install. Credentials stay on the host.
+- **DeepSeek:** configure the backend with your own `DEEPSEEK_API_KEY` and set `GEOTREE_DEEPSEEK_APPROVED=1` only when authorized. The adapter uses Responses SSE and `deepseek-flash`; otherwise it reports NOT_CONFIGURED.
+- **LIVE** records actual model and FreeCAD events. **REPLAY** uses a saved local artifact without a model request. “Feature reconstruction” exports actual intermediate FreeCAD features after building; it is not a live modeling feed. Fresh installations have no historical sessions.
+
+## Architecture
+
+FastAPI and WebGL Studio live in studio/. Agent execution, OCC queries, evidence gates, budgets and Harbor adapters are under src/geotree/. The bounded repair edits one allowed numeric AST slot, checks the constraint and geometry outside the intended area, then independently replays. It is not general automatic CAD repair. See [architecture](docs/presentation/architecture.svg) and the [editable deck](docs/presentation/GeoTree_Contest_Draft.pptx).
+
+## Historical E06 development scores
+
+| Task | B0 native Codex | B1 raw | B2 passive evidence-gated |
+|---|---|---:|---:|
+| Hinge leaf | NOT_RUN | 0.000000 | FAILED / reward=null |
+| Power-strip housing | NOT_RUN | 0.000000 (same-artifact regrade) | 0.814775 |
+
+[CSV](docs/presentation/benchmark_results.csv) and [acceptance](docs/E06_release_acceptance.md). Both power-strip artifacts replayed. B2 passed two basic checks, with no feedback-driven repair. This is not a causal comparison or a leaderboard result. B0 was not run because native subscription credential isolation was not verified.
+
+References: [CAD-Assistant, ICCV 2025](https://openaccess.thecvf.com/content/ICCV2025/html/Mallis_CAD-Assistant_Tool-Augmented_VLLMs_as_Generic_CAD_Task_Solvers_ICCV_2025_paper.html), [SPADA, ICML 2026](https://proceedings.mlr.press/v306/zheng26q.html), [DeciCAD, arXiv preprint](https://arxiv.org/abs/2610.21755), [CAD Bench V3](https://cadbench.ai/benchmark).

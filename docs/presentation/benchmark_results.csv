@@ -1,0 +1,7 @@
+group,task,digest,reward,status,tokens,wall_seconds,replay,trial,error,artifact_status
+B0,freecad-0a7d0da980,sha256:9fd2ecf1a502c529d332752336a2eb134f8df9209e5033a9ae3908f6cad55d8b,,NOT_RUN,,,NOT_RUN,,Native Harbor Codex requires a container auth/env route; no approved host-only subscription route verified,NOT_RUN
+B0,freecad-81ef58aebd,sha256:f9cc6886ffa7b344fb4ac4d236dc6c73d2d5f67c5a9bd0aff28a2cbc729ccdb3,,NOT_RUN,,,NOT_RUN,,Native Harbor Codex requires a container auth/env route; no approved host-only subscription route verified,NOT_RUN
+B1,freecad-0a7d0da980,sha256:9fd2ecf1a502c529d332752336a2eb134f8df9209e5033a9ae3908f6cad55d8b,0.0,SCORED_REGRADING,86661,377.44375,PASS,l-ad1a8ff0212d449e-l0,Docker default address pools exhausted,PRESENT
+B1,freecad-81ef58aebd,sha256:f9cc6886ffa7b344fb4ac4d236dc6c73d2d5f67c5a9bd0aff28a2cbc729ccdb3,0.0,SCORED,165124,781.308218,NOT_RUN,l-5bee781446f7f52d-l0,decision_budget_exhausted,NOT_RUN
+B2,freecad-0a7d0da980,sha256:9fd2ecf1a502c529d332752336a2eb134f8df9209e5033a9ae3908f6cad55d8b,0.814775490350993,SCORED,86531,533.287446,PASS,l-8c47cfc832e78a4b-l1,,PRESENT
+B2,freecad-81ef58aebd,sha256:f9cc6886ffa7b344fb4ac4d236dc6c73d2d5f67c5a9bd0aff28a2cbc729ccdb3,,FAILED,40593,250.772645,NOT_RUN,l-5bee781446f7f52d-l1,Model response stream disconnected,NOT_RUN

@@ -1,0 +1,19 @@
+{
+  "base_left": [
+    24,
+    24
+  ],
+  "base_length": 26,
+  "height": 20,
+  "thickness": 5,
+  "corner": "left",
+  "roi": [
+    23,
+    23,
+    51,
+    45
+  ],
+  "feature": "TargetCut",
+  "profile": "TargetProfile",
+  "constraint_id": "repair_port"
+}
